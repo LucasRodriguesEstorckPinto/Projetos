@@ -63,7 +63,9 @@ while True:
     if escolha == 1:
         print(' AQUI VAI CHAMAR FUNÇÕES PARA CADASTRO')    
     if escolha == 2:
-        print('AQUI VAI CHAMAR A FUNÇÃO PARA MOSTRAR O ARQUIVO DE ALUNOS')
+        arqui = open('notas.txt', encoding='utf-8')
+        print(arqui.read())
+        arqui.close()
     if escolha == 3:
         break
     elif  escolha >3 or escolha <1:
