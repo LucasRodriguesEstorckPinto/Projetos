@@ -20,9 +20,9 @@ def verifica():
 
 def atribui(nome, notas, arquivo):
     arquivo.write(f'{nome :<10}')
-    for c in range(0, 3):
-        arquivo.write(f'{notas[c][0]:<5}')
-        arquivo.write(f'{notas[c][1]:<5}')
+    for c in range(0, 4):
+        arquivo.write(f'{notas[c]:<5}')
+        arquivo.write(f'{notas[c]:<5}')
 
     arquivo.write('\n')
 
@@ -52,6 +52,15 @@ def inteiro(numero):
             print('\033[31mPor favor, digite um número\033[m')
         else:
             return int(valor)
+
+def flutuante(numero):
+    while True:
+        try:
+            valor = float(input(numero))
+        except:
+            print('\033[31mPor favor, digite um número\033[m')
+        else:
+            return float(valor)
             
 
 
@@ -61,7 +70,20 @@ while True:
     opcoes()
     escolha = inteiro('Digite aqui sua escolha: ')
     if escolha == 1:
-        print(' AQUI VAI CHAMAR FUNÇÕES PARA CADASTRO')    
+        titulo('CADASTRANDO ALUNO')
+        lista = []
+        name = str(input('Nome do aluno: ')).lower().title().strip()
+        nota1 = flutuante('Digite a primeira nota: ')
+        lista.append(nota1)
+        nota2 = flutuante('digite a segunda nota:')
+        lista.append(nota2)
+        nota3 = flutuante('digite a terceira nota:')
+        lista.append(nota3)
+        media = (nota1 + nota2 + nota3) / 3
+        lista.append(media)
+        print(lista)
+        atribui('Lucas', lista, 'notas.txt')
+
     if escolha == 2:
         arqui = open('notas.txt', encoding='utf-8')
         print(arqui.read())
