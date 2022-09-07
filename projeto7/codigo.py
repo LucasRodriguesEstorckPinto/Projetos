@@ -98,5 +98,3 @@ while True:
         break
     elif  escolha >3 or escolha <1:
         print('\033[31mPOR FAVOR DIGITE UMA DAS OPÇÕES\033[m')
-    
-    
