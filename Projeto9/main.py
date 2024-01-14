@@ -1,40 +1,40 @@
-import re
+# receberei um arquivo no seguinte formato
+    #alexandre       456123789
+    #anderson        1245698456
+    #antonio         123456456
+    #carlos          91257581
+    #cesar           987458
+    #rosemary        789456125
 
 
-# FUNÇÕES
+road = 'usuarios.txt'
 
-def byte_to_megabyte(val):
-    mega = val /(1024 **2)
-    return f"{mega:.2f}"
+#FUNÇÕES
 
-def percentual_use(totalsum , user):
-    percentual = (100 * user) / totalsum
-    return percentual
-
-def sum_all_memory():
-    summemory = 0
-    with open('Projeto9/usuarios.txt', 'r') as file: # o bloco with fecha automaticamente o arquivo
-        # Para cada linha no arquivo
-        for line in file:
-            # Use expressão regular para encontrar números na linha
-            numbers = re.findall(r'\d+', line)
-        
-    return numbers
-
-#PROGRAMA PRINCIPAL 
-
-try: 
-    open("Projeto.9/relatorio.txt" , "r")
-except:
-    file = open("Projeto9/relatorio.txt",'w')
-    file.write(f'{"Acme Inc."<10}{"Uso do espaço em disco dos usuários"}')
-    for c in range(1,7):
-        pass
-
-
-
-else:
-    print("Relatório ja consta feito.")
+def catch_number_string(road):
+    names = []
+    numbers = []
+    try:
+        read = open(road,'r')
+    except:
+        print("Error to open the archive")  
+    else:
+        with read as file:    #método with fecha o arquivo automaticamente, mesmo em caso de excessão
+            lines = file.readlines()
+            for line in lines:
+                part = line.split()
+                if len(part) == 2:
+                    name , number = part
+                    names.append(name)
+                    numbers.append(number)
+                else:
+                    print("Error in lists")
     
+    return names , numbers
 
-
+def summemory_average(memory):
+    total = 0
+    average = 0
+    for sum in memory:
+        total +=sum
+    
